@@ -1,0 +1,26 @@
+<app-toolbar [data]="configData | async"></app-toolbar>
+<div>
+  <button
+    mat-raised-button
+    class="example-add-tab-button"
+    (click)="addTab('newTab')"
+  >
+    Add new tab
+  </button>
+</div>
+
+<mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+  @for (tab of tabs; track tab; let index = $index) {
+  <mat-tab [label]="tab" *ngFor="tab; of: tabs; track: tab; let index = $index">
+    Contents for {{ tab }} tab
+    <button
+      mat-raised-button
+      class="example-delete-tab-button"
+      [disabled]="tabs.length === 1"
+      (click)="removeTab(index)"
+    >
+      Delete Tab
+    </button>
+  </mat-tab>
+  }
+</mat-tab-group>
