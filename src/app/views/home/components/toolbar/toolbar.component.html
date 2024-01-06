@@ -3,10 +3,11 @@
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with menu icon"
+    (click)="drawer.toggle()"
   >
     <mat-icon>menu</mat-icon>
   </button>
-  <span>{{data?.user?.oficina}}</span>
+  <span>{{data?.user?.oficina }}</span>
   <span class="spacer"></span>
   <span>{{data?.user?.grado}} {{data?.user?.nombre}}</span>
   <button
@@ -18,14 +19,9 @@
   </button>
   
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="openDialogConfig()">
       <mat-icon>settings</mat-icon>
       <span>Ajustes</span>
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-menu-item>
-      <mat-icon>logout</mat-icon>
-      <span>Cerrar Sesión</span>
     </button>
   </mat-menu>
 </mat-toolbar>

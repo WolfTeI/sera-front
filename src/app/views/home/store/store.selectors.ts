@@ -1,41 +1,36 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromStore from './store.reducer';
 
-export const selectStoreState = createFeatureSelector<fromStore.ConfigData>(
+export const selectStoreState = createFeatureSelector<fromStore.State>(
   fromStore.storeFeatureKey
 );
 
 export const selectConfigData = createSelector(
   selectStoreState,
-  (state: fromStore.ConfigData) => state
+  (state: fromStore.State) => state.data
 );
 
-export const selectNombreApp = createSelector(
+export const selectTablas = createSelector(
   selectStoreState,
-  (state: fromStore.ConfigData) => state.nombreApp
+  (state: fromStore.State) => state.tablas
 );
 
-export const selectUser = createSelector(
+export const selectCampos = createSelector(
   selectStoreState,
-  (state: fromStore.ConfigData) => state.user
+  (state: fromStore.State) => state.campos
 );
 
-export const selectInstitucion = createSelector(
+export const selectContenido = createSelector(
   selectStoreState,
-  (state: fromStore.ConfigData) => state.user.institucion
+  (state: fromStore.State) => state.contenido
 );
 
-export const selectDependencia = createSelector(
+export const selectError = createSelector(
   selectStoreState,
-  (state: fromStore.ConfigData) => state.user.dependencia
+  (state: fromStore.State) => state.error
 );
 
-export const selectOficina = createSelector(
+export const selectSuccess = createSelector(
   selectStoreState,
-  (state: fromStore.ConfigData) => state.user.oficina
-);
-
-export const selectMembrete = createSelector(
-  selectStoreState,
-  (state: fromStore.ConfigData) => state.user.membrete
+  (state: fromStore.State) => state.message
 );
